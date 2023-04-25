@@ -15,6 +15,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Random;
+
 public class App extends Application {
 
     Font macFriendlyFont = new Font("Arial", 12);
@@ -60,34 +62,54 @@ public class App extends Application {
 
     }
 
-    private void showScene3() // show lots
+    private void showScene3() //show info
     {
-//        availLotsHeader.setText("Available Slots:"); //center this
-        String[] lots = {"Lot 1", "Lot 2", "Lot 3", "Lot 4", "Lot5"};
-        VBox lotBtnContainer = new VBox();
-        for (String lot : lots) {
-            Button lotBtn = new Button(lot);
-//            lotBtn.setOnAction(e -> handleButtonClick(lotBtn));
-            lotBtnContainer.getChildren().add(lotBtn);
-        }
-        Button testo = new Button();
-        testo.setText("Total Slots: 500 \nSlots available: " + parkingLot.getTotalSlots());
-        testo.setFont(macFriendlyFont);
-        VBox parkingLotScreen = new VBox(testo);
-        scene3 = new Scene(parkingLotScreen, 800, 400);
-        stage.setScene(scene3);
+        String lotOneInfo = parkingLot.getTotalSlots();
+        String lotTwoInfo = parkingLot.getTotalSlots();
+        String lotThreeInfo = parkingLot.getTotalSlots();
+        String lotFourInfo = parkingLot.getTotalSlots();
+        String lotFiveInfo = parkingLot.getTotalSlots();
+
+        Label infoOne = new Label(lotOneInfo);
+        Label infoTwo = new Label(lotTwoInfo);
+        Label infoThree = new Label(lotThreeInfo);
+        Label infoFour = new Label(lotFourInfo);
+        Label infoFive = new Label(lotFourInfo);
+
+
+
+//        testo.setText("Total Slots: 500 \nSlots available: " + parkingLot.getTotalSlots());
+//        testo.setFont(macFriendlyFont);
+//        VBox parkingLotScreen = new VBox(testo);
+//        scene3 = new Scene(parkingLotScreen, 800, 400);
+//        stage.setScene(scene3);
         stage.show();
 
     }
-//    private void showScene4() //show lots and zones
-//    {
-//
-//        Button testo1 = new Button();
-//        VBox lotAndZonesScreen = new VBox(testo1);
-//        scene4 = new Scene(lotAndZonesScreen);
-//
-//
-//    }
+
+    public static class parkingLot { ///////////////
+        private int lots = 5;
+
+
+        public parkingLot(int _lots)
+        {
+            this.lots = _lots;
+        }
+
+        public static int totalSlots = 500;
+        public static String getTotalSlots()
+        {
+            Random randomNum = new Random();
+            int occupancyNum = randomNum.nextInt(500);
+            String occupancyStr = "";
+            occupancyStr += occupancyNum;
+            totalSlots = occupancyNum;
+            return occupancyStr;
+
+        }
+
+    }
+
 public static void main(String[] args) {
 launch();
 }

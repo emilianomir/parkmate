@@ -1,7 +1,7 @@
 package com.example;
 import java.util.Random;
 
-public class parkingLot {
+public class parkingLot { ///////////////////
     private int lots = 5;
 
     public parkingLot(int _lots)
